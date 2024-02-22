@@ -52,5 +52,33 @@ public class Parking {
         System.out.println("Available slots: "+availabaleSlot);
     }
 
-    
+    private static void removeCar() {
+        Scanner sc = new Scanner(System.in);
+        if(availabaleSlot == slots){
+            System.out.println("There is no cars parked yet. So no cars can be cancelled");
+            return;
+        }
+        System.out.println("Enter the license plate number of the car to be removed: ");
+        int license_num = sc.nextInt();
+        for(int i=0;i<parkingSlot.size();i++){
+            if(license_num == parkingSlot.get(i)){
+                parkingSlot.remove(Integer.valueOf(license_num));
+                System.out.print("Car removed Successfully. ");
+                availabaleSlot++;
+                System.out.println("Available slots: "+availabaleSlot);
+                break;
+            }
+            System.out.println("The car is not parked here");
+        }
+    }
+
+    private static void viewParkedCars() {
+        if(parkingSlot.isEmpty()){
+            System.out.println("There are no parked cars");
+        }
+        System.out.println("Parked cars");
+        for(int i=0;i<parkingSlot.size();i++){
+            System.out.println(parkingSlot.get(i));
+        }
+    }
 }
